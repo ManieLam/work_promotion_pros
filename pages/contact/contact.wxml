@@ -1,0 +1,28 @@
+<!--pages/contact/contact.wxml-->
+	<view class="container bgfff">
+		<view class="content">
+			<view wx:for="{{contactData.items}}" wx:key="item" >
+				<view class="pd_t10 lh2"><view class="icons icon_block"></view>{{item.name}}</view>
+				<view  class=" newCell_box">
+					<view class="newCells justAround"  wx:for="{{item.contact}}" wx:for-item="details" wx:key="details">
+						<view class="cell_name"><view class="icons icon_smile"></view>{{details.title}}</view>
+					    <view class="weui-cell__bd text-center mar_r10"><image src="../../assets/images/icon-wechart.png"  class="icons_sq mar_r5" ></image> <text selectable="true">{{details.weixin}}</text></view>
+    					<view class="weui-cell__ft">
+    						<button size="mini" class="btn_call" bindtap="callOnLine" data-phone="{{details.phone}}">
+    							直接拨打
+    							<image src="../../assets/images/iconfont-tel.png" class="icons" ></image>
+    						</button>
+    					</view>
+					</view>
+
+				</view>
+			</view>
+		</view>
+
+		<view class=" contactCell  text-center " >
+			<button class="contactBtn" open-type="contact">在线咨询</button>
+			<!--<text for="contact" class="" style="padding-right:20px;margin-top:-5px">在线咨询</text>
+			<contact-button class="btn_icon bg-2A95BF" bindtap="messageOnLine"  type="default-light" size="20" session-from="weapp" id="contact"></contact-button>-->
+		</view>
+
+	</view>

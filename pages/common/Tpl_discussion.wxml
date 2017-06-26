@@ -1,0 +1,56 @@
+<import src="Tpl_list.wxml" />
+
+
+<template name="discussion">
+    <view class="flex flex-cloumn fsize17 bgfff" catchtap="navigateToDetail">
+        <view class="weui-cell weui-cell_access flex flex-between " >
+            <view class=" flex weui-cell__bd">
+                <view class="flex flex-grow mar_r20" style="min-width:45px;height:45px;max-width:10%;">
+                    <image src="" style="width:100%;height:100%;background:#4a485d;"></image>
+                </view>
+                <view class="flex flex-cloumn">
+                    <view>名称</view>
+                    <view class="info-fonts">8小时前</view>
+                </view>
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access" hidden="{{noNext}}"> </view>
+        </view>
+        <view class="discussion_body">
+            小程序又增新流量入口，支持自定义关键词搜索，对此你有什么看法吗？
+        </view>
+        <view>
+            <!--图设置自适应-->
+            <template is="flexImgs" data="{{images,imgWidth}}"></template>
+        </view>
+        <view class="discussion_footer flex" hidden="{{noNext}}">
+            <view>
+                <image src="../../../assets/images/icon-like2.png" class="icons_mini"></image>123
+            </view>
+            <view>
+                <image src="../../../assets/images/icon-dialog.png" class="icons_mini"></image>123
+            </view>
+        </view>
+    </view>
+</template>
+
+<template name="discDetail">
+     <view class="flex flex-around">
+        <view class="flex discItem {{items.length>1?'bor_e5':''}}">
+            <view class="flex flex-grow mar_r20" style="min-width:45px;height:45px;max-width:20%;">
+                <image src="" style="width:100%;height:100%;background:#4a485d;"></image>
+            </view>
+            <view class="flex flex-cloumn  " >
+                <view class="col_b2 md_fonts flex flex-between"> 
+                    <text class="col_466">用户昵称</text>
+                    <text class="info-fonts">3小时前</text>
+                </view>
+                <view class="col_35 sm_fonts ">
+                    <view class="">回复 <text class="col_466"> AAA</text> :</view>
+                    评论内容评论内容评论内容评论内容评论内容评论内容评论内容
+                </view>
+            </view>
+        </view>
+        
+    </view>
+</template>
+

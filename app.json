@@ -1,0 +1,38 @@
+{
+    "pages": [
+        
+        "pages/index/index",
+        "pages/platform/platform",
+        "pages/articalDetail/articalDetail",
+        "pages/contact/contact"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#37373a",
+        "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#e94c32",
+        "borderStyle": "black",
+        "backgroundColor": "#fff",
+        "list": [{
+            "pagePath": "pages/index/index",
+            "text": "公众号",
+            "iconPath": "assets/images/icon-news.png",
+            "selectedIconPath": "assets/images/icon-news-active.png"
+        }, {
+            "pagePath": "pages/platform/platform",
+            "text": "其他渠道",
+            "iconPath": "assets/images/icon-other.png",
+            "selectedIconPath": "assets/images/icon-other-active.png"
+        }, {
+            "pagePath": "pages/contact/contact",
+            "text": "商务合作",
+            "iconPath": "assets/images/icon-contact.png",
+            "selectedIconPath": "assets/images/icon-contact-active.png"
+        }]
+    }
+
+
+}

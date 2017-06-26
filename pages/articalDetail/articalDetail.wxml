@@ -1,0 +1,88 @@
+<!-- pages/articalDetail/articalDetail.wxml -->
+<import src="../../helpers/wxParse.wxml"  />
+<import src="../common/Tpl_discussion.wxml"  />
+<import src="../common/Tpl_hasMore.wxml"  />
+<view class="container ">
+    <navigator class="headerLink_box " url="/pages/index/index" open-type="switchTab" wx:if="{{isShare}}">
+        <!--<image src="{{icon}}" class="icon">
+    </image>
+    -->
+    <view class="text">浏览更多资讯</view>
+</navigator>
+<view class="flex rel {{isShare?'margin-top':''}} ">
+    <view wx:if="{{resultList.thumbnail}}"
+          style="background:url('{{resultList.thumbnail}}');background-size:100% 100%;background-position:center;height:300rpx;width:100%;">
+    
+    </view>
+    <image src="{{'../../assets/images/detailBanner.jpg'}}" style="height:350rpx;width:100%"
+           wx:if="{{!resultList.thumbnail}}"></image>
+    <text class="header_title">{{resultList.title}}</text>
+    <text class="text-right col_b2 header_time">{{resultList.time}}</text>
+</view>
+<view wx:if="{{!showWrite}}">
+    <view class="flex artical_item">
+        <view class="artical_item_detail">
+            <template is="wxParse" data="{{wxParseData:content.nodes}}"  />
+        </view>
+    </view>
+    <view class="artical_footer fsize17">
+        <!--<view class="flex flex-t-center">
+            <view class="flex flex-cloumn mar_r20" bindtap="likeArtical">
+                <view class="artical_like_btn {{isLikeArt?'artical_like_btn-active':''}}">
+                    <image class="artical_like"
+                           src="{{isLikeArt?'../../assets/images/icon-big-like-active.png':'../../assets/images/icon-big-like.png'}}">
+                    
+                    </image>
+                </view>
+                <text class="info-fonts" style="text-align:center;font-size:14px;">{{resultList.like_count||0}}</text>
+            </view>
+            <view class="artical_like_btn artical_like_btn-active">
+                <button class=" share_btn " open-type="share"></button>
+            </view>
+        </view>-->
+        <!-- 点赞 -->
+        <!--<view   class="flex flex-wrap flex-t-center newCells_img" >
+        <image wx:for="{{resultList.likes}}" wx:key="item" src="{{item.avatarurl ||item.avatar}}" background-size="cover"></image>
+    </view>-->
+    
+    <!-- end 点赞 -->
+    <!--<view class="dividing-line">
+    留言区</view>
+    <view class="txt-right col_6f" bindtap="showWrite">
+        写留言
+         <image src="../../assets/images/icon-document.png" style="width:35rpx;height:35rpx;vertical-align:middle;">
+    </image>
+</view>-->
+
+<!--<view class="pad20" wx:for="{{resultList.replies}}" wx:key="items" wx:for-item="items">
+    <view class="flex flex-around ">
+        <view class="flex flex-grow mar_r20 userUrl">
+            <image src="{{items.user.avatarurl}}" style="width:100%;height:100%;background:#b2b2b2;"></image>
+        </view>
+        <view class="flex flex-cloumn  w100">
+            <view class="col_b2 md_fonts flex flex-between">
+                {{items.user.nickname}}
+                            <view class="info-fonts" >
+                {{items.time}}
+            </view>
+            </view>
+            <view class="col_35 sm_fonts">{{items.text}}</view>
+        </view>
+       
+    </view>
+</view>-->
+<!--<template is="hasMore" data="{{...hasMore}}"></template>-->
+ <!-- end 留言区 -->
+
+</view>
+</view>
+</view>
+<!-- 留言板 -->
+<view wx:if="{{showWrite}}" class="textareaBox">
+<textarea placeholder="留言将由小程序后台筛选后显示，对所有人可见。" placeholder-class=" placeClass" bindinput="getWrite"
+          class="textareaStyle"></textarea>
+<button type="primary" catchtap="writeDownMesg">确认提交</button>
+</view>
+<!-- 留言板end -->
+
+

@@ -1,0 +1,32 @@
+<!--index.wxml-->
+
+<import src="../common/Tpl_hasMore.wxml"/>
+<import src="../common/Tpl_tab.wxml"/>
+<import src="../common/Tpl_list.wxml"/>
+<import src="../common/Tpl_modal.wxml"/>
+
+<view class="container rel">
+	<view  hidden="{{isShow}}" class="tags flex">
+		<view  class="tags_cel {{cat_id == tag.id ?'act_cat':''}}" wx:for="{{pTags}}" wx:for-item="tag" data-id="{{tag.id}}" bindtap="showNewTagList">
+			{{tag.name}}
+		</view>
+		<view class="tags_cel " data-show="true"  bindtap="showTag">更多<view class="triangle triangle-down"></view></view>
+	</view>
+	<!-- end 头部 -->
+	<view hidden="{{allShow}}" class="tags flex">
+		<view  class="tags_cel {{cat_id == tag.id ?'act_cat':''}}" wx:for="{{tags}}" wx:for-item="tag" data-id="{{tag.id}}" bindtap="showNewTagList">
+			{{tag.name}}
+		</view>
+		<view class="tags_cel" data-show="false"  bindtap="showTag">收起 <view class="triangle triangle-up"></view></view>
+	</view>
+	<!-- end 头部隐藏部分 -->
+	<view class="slider"></view>
+	<view class="container_body">
+			<view class="weui-tab__panel pa_t0">
+			   	<template is="listWithImgs" data="{{...newAccounts,staticTags,isAct  }}"></template>
+			</view>
+			<template is="hasMore" data="{{hasMore}}"></template>
+	</view>
+	<template is="modal_accounts" data="{{...modalInit,staticTags,isAct}}"></template>
+
+</view>

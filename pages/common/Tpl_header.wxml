@@ -1,0 +1,17 @@
+<template name="header">
+<!-- 仅一张静态图 -->
+	<view class="tplHeader_box">
+		<view class="tplHeader_bg"></view>
+	</view>
+</template>
+
+<template name="scrollHeader">
+	<!-- 头部滚动图  data="{{imgUrls,indicatorDots,autoplay,interval,duration, }}"-->
+	<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:{{height}}rpx;">
+		<block wx:for="{{imgUrls}}" wx:key="item">
+			<swiper-item>
+			    <navigator url="{{item.path}}" class="classname" style="background:url('{{item.image}}')no-repeat;background-size:cover;background-position:center;height:490rpx"></navigator>
+			</swiper-item>
+		</block>
+	</swiper>
+</template>

@@ -1,0 +1,67 @@
+<!-- list 模板 -->
+<!-- 传入参数 data="{...data,noMore}" -->
+<import src="Tpl_hasMore.wxml"  />
+<template name="infoList">
+	<view class="weui-cells weui-cells_after-title">
+		<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{items}}" wx:key="item"
+		      bindtap="navigateToArticalDetail" data-aid="{{item.id}}">
+			<view class="weui-cell__bd">{{item.title}}</view>
+			<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+		</view>
+	</view>
+	<template is="hasMore" data="{{hasMore}}"></template>
+</template>
+
+<template name="listWithImgs">
+	<view class="weui-cells_after-title newCells">
+		<view class="weui-cell" wx:for="{{items}}" wx:key="item" data-id="{{item.id}}" bindtap="navigateToArticalDetail">
+			<view class="con_left flex_1 flex-center">
+				<view class="weui-cell__hd newCells_img">
+					<image src="{{item.thumbnail||'../../assets/images/icon-xiao.jpg'}}"  />
+				</view>
+				<view class="weui-cell__bd title">
+					{{item.title}}
+				</view>
+			</view>
+			<view class="con_right flex flex_2">
+				<view class="con_right_up">
+					<view class="fans">粉丝数</view>
+					<view class="read">头条阅读</view>
+					<view class="sex">男女比例</view>
+				</view>
+				<view class="con_right_up">
+					<view class="fans">{{item.fans}}</view>
+					<view class="read">{{item.read}}</view>
+					<view class="sex">{{item.gender}}</view>
+				</view>
+				<view class="con_right_tags flex flex-t-center w100" >
+					<view  class="tags-cell {{tags.isAct?'tags-cell_act':''}} " wx:for="{{staticTags}}" wx:key="{{tags}}" wx:for-index="index" data-id="{{tags.id}}"> {{item}} </view>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<template name="flexImgs">
+	<view class="list-box rel">
+		<view class="flex-wrp">
+			<view class="{{images.length>4?'flex-image-nomar':(images.length==1?'nomar':'flex-image')}}" wx:for="{{ images }}" wx:key="" wx:for-index="image_index" wx:for-item="image">
+				<view wx:if="{{images.length >= 2}}" data-ablum="{{ablumType}}" data-pindex="{{ item_index }}" data-index="{{ image_index }}" catchtap="previewImage" background-position="center center"  style="background-image:url({{ image.src }});height:{{imgWidth}}px; width: {{imgWidth}}px;background-size: cover; background-repeat: no-repeat;">	
+				</view>
+				<!--<view wx:if="{{images.length >4}}" data-ablum="{{ablumType}}" data-pindex="{{ item_index }}" data-index="{{ image_index }}" catchtap="previewImage" background-position="center center"  style="background-image:url({{ image.src }});height:{{imgWidth}}px; width: {{imgWidth}}px;background-size: cover; background-repeat: no-repeat;">
+				</view>-->
+				<!--<view wx:if="{{images.length ==2}}" data-ablum="{{ablumType}}" data-pindex="{{ item_index }}"
+				      data-index="{{ image_index }}" catchtap="previewImage" background-position="center center"
+				      style="background-image:url({{ image.src }});height:{{imgWidth*3/2}}px; width: {{imgWidth*3/2}}px;background-size: cover; background-repeat: no-repeat;">
+				
+				</view>-->
+				<view wx:if="{{images.length == 1}}" data-ablum="{{ablumType}}" data-pindex="{{ item_index }}"
+				      data-index="{{ image_index }}" catchtap="previewImage" background-position="center center"
+				      style="background-image:url({{ image.src }});height:{{imgWidth}}px; width: {{imgWidth}}px;background-size: cover; background-repeat: no-repeat;">
+				
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
