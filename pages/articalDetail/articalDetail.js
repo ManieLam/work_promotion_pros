@@ -24,7 +24,7 @@ Page({
         })
 
         // 设置请求链接
-        that.getDetail = 'mag.chanel.get.json';
+        that.getDetail = 'mag.channel.get.json';
         that.getArticalDetail()
 
     },

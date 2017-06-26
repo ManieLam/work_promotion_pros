@@ -78,31 +78,33 @@ Page({
             api: that.listsLink,
             data: params,
         }).then(data => {
-            console.info("data::", data)
+            // console.info("data::", data)
             if (data.errcode == 0) {
                 wx.setNavigationBarTitle({ title: data.page_title })
                 let dataList = data.accounts;
                 if (dataList.length) {
 
                     dataList.map(res => {
-                        res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/2/w/120" : '';
-                    })
-                    console.info("dataList", dataList)
+                            res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/2/w/120" : '';
+                        })
+                        // console.info("dataList", dataList)
                     let isAct = [];
+                    let staticTags = that.data.staticTags;
                     dataList.map(res => {
                         res.adtype.map(adtype => {
                             isAct.push(adtype.id)
                         })
                     })
-                    console.info("isAct", isAct)
-                        // for (isAct of that.data.staticTags.entries()) {
-                        //     console.info(isAct)
-                        // }
-                        // that.data.staticTags.map(items => {
-                        //         if (res.id == items.id) {
-                        //             items.isAct = true;
-                        //         }
-                        //     })
+
+                    staticTags.map(items => {
+                        if (isAct.findIndex(data => {
+                                return data == items.id
+                            }) != -1) {
+                            items.isAct = true;
+                        }
+                    })
+
+
 
                     let next_cursor = data.next_cursor,
                         next_first = data.next_first;
@@ -112,8 +114,8 @@ Page({
                     // next_cursor != next_first ? setObj.params.paged++ : null;
                     that.setData({
                         [objName]: setObj,
-                        isAct: isAct,
                         tags: data.categorys,
+                        staticTags: staticTags,
                         pTags: data.categorys.slice(0, 3),
                         page_title: data.page_title,
                         share_title: data.share_title,

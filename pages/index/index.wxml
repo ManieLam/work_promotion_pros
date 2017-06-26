@@ -23,10 +23,10 @@
 	<view class="slider"></view>
 	<view class="container_body">
 			<view class="weui-tab__panel pa_t0">
-			   	<template is="listWithImgs" data="{{...newAccounts,staticTags,isAct  }}"></template>
+			   	<template is="listWithImgs" data="{{...newAccounts,staticTags  }}"></template>
 			</view>
 			<template is="hasMore" data="{{hasMore}}"></template>
 	</view>
-	<template is="modal_accounts" data="{{...modalInit,staticTags,isAct}}"></template>
+	<template is="modal_accounts" data="{{...modalInit,staticTags}}"></template>
 
 </view>
