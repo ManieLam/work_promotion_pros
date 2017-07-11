@@ -1,44 +1,44 @@
 <template name="modal_accounts">
-	<!-- <modal class="modal" hidden="{{modalHide}}" no-cancel bindconfirm="modalChange" bindcancel="modalChange"> -->
-		<view class="newModal flex flex-center flex-t-center" hidden="{{modalHide}}" catchtap="modalChange">
-			<view class="weui-cells_after-title newCells newModal_body" >
-				<view class="weui-cell" data-id="{{item.id}}" bindtap="navigateToArticalDetail">
-					<view class="con_left flex_1 flex-center">
-						<view class="weui-cell__hd newCells_img">
-							<image src="{{item.thumbnail||'../../assets/images/icon-xiao.jpg'}}"  />
-						</view>
-						<view class="weui-cell__bd title">
-							{{item.title}}
-						</view>
+	<!-- <modal class="modal" hidden="{{modalHide}}" no-cancel bindconfirm="modalChange" bindcancel="modalChange">
+	-->
+	<view class="newModal flex flex-center flex-t-center" hidden="{{modalHide}}" catchtap="modalChange">
+		<view class="weui-cells_after-title newCells newModal_body">
+			<view class="weui-cell" data-id="{{item.id}}" bindtap="navigateToArticalDetail">
+				<view class="con_left flex_1 flex-center">
+					<view class="weui-cell__hd newCells_img">
+						<image src="{{item.thumbnail||'../../assets/images/icon-xiao.jpg'}}"  />
 					</view>
-					<view class="con_right flex flex_2">
-						<view class="con_right_up">
-							<view class="fans">粉丝数</view>
-							<view class="read">头条阅读</view>
-							<view class="sex">男女比例</view>
-						</view>
-						<view class="con_right_up">
-							<view class="fans">{{item.fans}}</view>
-							<view class="read">{{item.read}}</view>
-							<view class="sex">{{item.gender}}</view>
-						</view>
-						<view class="con_right_tags flex flex-t-center w100" >
-							<view   wx:for="{{staticTags}}" wx:key="item"  data-id="{{item.id}}" class="tags-cell {{item.isAct?'tags-cell_act':''}} "> {{item.name}}</view>
-						</view>
+					<view class="weui-cell__bd title">{{item.title}}</view>
+				</view>
+				<view class="con_right flex flex_2">
+					<view class="con_right_up">
+						<view class="fans">粉丝数</view>
+						<view class="read">头条阅读</view>
+						<view class="sex">男女比例</view>
 					</view>
-					<!--end .con_right-->
+					<view class="con_right_up">
+						<view class="fans">{{item.fans}}</view>
+						<view class="read">{{item.read}}</view>
+						<view class="sex">{{item.gender}}</view>
+					</view>
+					<view class="con_right_tags flex  w100">
+						<view wx:for="{{item.adtype}}" wx:for-item="tags" wx:key="tags" data-id="{{tags.id}}"
+						      class="tags-cell tags-cell_act{{tags.isAct?'tags-cell_act':''}} ">{{tags.name}}</view>
+					</view>
+				</view>
+				<!-- end .con_right -->
 			</view>
 			<!-- end .weui-cell -->
 			<view class="con_bottom ">
-				<view wx:for="{{item.tags}}" wx:key="tags" wx:for-item="tags" class="tags_self "> {{tags}}</view>
+				<view wx:for="{{item.tags}}" wx:key="tags" wx:for-item="tags" class="tags_self " style="float:left">{{tags}}</view>
+				<view style="height:3px;width:100%;clear:both"></view>
 			</view>
-			<view class="con_cell">{{item.excerpt||'暂无描述'}}</view>
 
+			<view class="con_cell">{{item.excerpt||'暂无描述'}}</view>
 		</view>
 		<view class="overTag"></view>
-
 		<!-- end .weui-cells -->
-		</view>
-
-	<!-- </modal> -->
+	</view>
+	<!-- </modal>
+	-->
 </template>

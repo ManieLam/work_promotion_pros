@@ -11,8 +11,7 @@
 </navigator>
 <view class="flex rel {{isShare?'margin-top':''}} ">
     <view wx:if="{{resultList.thumbnail}}"
-          style="background:url('{{resultList.thumbnail}}');background-size:100% 100%;background-position:center;height:300rpx;width:100%;">
-    
+          style="background:url('{{resultList.thumbnail}}') no-repeat;background-size:100% 100%;background-position:center;height:300rpx;width:100%;">
     </view>
     <image src="{{'../../assets/images/detailBanner.jpg'}}" style="height:350rpx;width:100%"
            wx:if="{{!resultList.thumbnail}}"></image>
@@ -20,7 +19,7 @@
     <text class="text-right col_b2 header_time">{{resultList.time}}</text>
 </view>
 <view wx:if="{{!showWrite}}">
-    <view class="flex artical_item">
+    <view class="flex artical_item ">
         <view class="artical_item_detail">
             <template is="wxParse" data="{{wxParseData:content.nodes}}"  />
         </view>

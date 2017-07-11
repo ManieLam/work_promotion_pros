@@ -3,20 +3,20 @@ var that;
 Page({
     data: {
         list: [],
+        // isFirst: 0,
     },
     onLoad(options) {
-       that = this;
-       that.listsLink = 'mag.channel.list.json';
-       that.setData({
+        that = this;
+        that.listsLink = 'mag.channel.list.json';
+        that.setData({
             id: options.id,
         })
-       this.initData();
+        this.initData();
     },
     initData() {
         let obj = {
             items: [],
-            params: {
-            },
+            params: {},
         };
         that.setData({
             list: obj,
@@ -32,14 +32,13 @@ Page({
             api: that.listsLink,
             data: params,
         }).then(data => {
-            console.info("data::", data)
             if (data.errcode == 0) {
-                wx.setNavigationBarTitle({ title: data.page_title || App.globalData.naviTitle })
+                wx.setNavigationBarTitle({ title: data.page_title })
                 let dataList = data.channels;
                 if (dataList.length) {
                     setObj.items = [];
                     dataList.map(res => {
-                        res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/2/w/140/h/140" : '';
+                        res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/1/w/140/h/140" : '';
                     })
                     setObj.items = [...setObj.items, ...dataList];
                     that.setData({
@@ -53,6 +52,10 @@ Page({
             // App.showErrToast('暂无该关键字文章', 3000);
         })
     },
+    onPullDownRefresh() {
+        // isFirst++;
+        // console.log(isFirst);
+    },
     navigateToArticalDetail(e) {
         const aid = e.currentTarget.dataset.aid;
         wx.navigateTo({
@@ -61,9 +64,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-        title: that.data.share_title || App.globalData.naviTitle,
-        desc: '给你最好的推广!',
-        path: 'pages/detail/order'
+            title: that.data.share_title,
+            // desc: '给你最好的推广!',
+            path: 'pages/detail/order'
         }
-  }
+    }
 })

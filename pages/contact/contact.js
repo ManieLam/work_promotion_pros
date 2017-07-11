@@ -16,7 +16,7 @@ Page({
     onLoad(options) {
         that = this;
         // 接口
-        that.contactLink = 'mag.contact.home.json';
+        that.contactLink = 'mag.contact.home1.json';
         that.getContactData();
     },
     getContactData() {
@@ -28,13 +28,14 @@ Page({
             data: params,
         }).then(data => {
             if (data.errcode == 0) {
-                wx.setNavigationBarTitle({ title: data.page_title || App.globalData.naviTitle })
+                wx.setNavigationBarTitle({ title: data.page_title })
+                let newData = data.contact_cat;
 
-                if (data.contact_cat.length) {
+                if (newData.length) {
                     // if(data.current_page ==1){
                     //   setObj.items = [];
                     // }
-                    let newData = data.contact_cat;
+
                     setObj.items = [...setObj.items, ...newData];
                     let hasMore = data.total_pages > data.current_page ? true : false;
                     setObj.paginate.has_more = hasMore;
@@ -59,7 +60,7 @@ Page({
     },
     onShareAppMessage() {
         return {
-            title: that.data.share_title || App.globalData.naviTitle,
+            title: that.data.share_title,
             path: '/pages/contact/contact',
         }
     }

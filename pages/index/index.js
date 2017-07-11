@@ -65,46 +65,28 @@ Page({
 
     // },
 
-    getList() {
+    getList(options) {
         let objName = 'newAccounts';
         let setObj = that.data[objName];
 
         let params = Object.assign(setObj.params, {
             cat: that.data.cat_id
-        });
-        // let initHeader = that.data.initHeader;
+        }, options);
 
         App.HttpRequire.call({
             api: that.listsLink,
             data: params,
         }).then(data => {
-            // console.info("data::", data)
             if (data.errcode == 0) {
                 wx.setNavigationBarTitle({ title: data.page_title })
                 let dataList = data.accounts;
                 if (dataList.length) {
 
                     dataList.map(res => {
-                            res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/2/w/120" : '';
-                        })
-                        // console.info("dataList", dataList)
-                    let isAct = [];
-                    let staticTags = that.data.staticTags;
-                    dataList.map(res => {
-                        res.adtype.map(adtype => {
-                            isAct.push(adtype.id)
-                        })
+                        res.thumbnail = res.thumbnail ? res.thumbnail + "?imageView2/2/w/120" : '';
+                        res.read = res.read > 10000 ? res.read.substr(0, res.read.length - 4) + 'W+' : res.read;
+                        res.fans = res.fans > 10000 ? res.fans.substr(0, res.fans.length - 4) + 'W+' : res.fans;
                     })
-
-                    staticTags.map(items => {
-                        if (isAct.findIndex(data => {
-                                return data == items.id
-                            }) != -1) {
-                            items.isAct = true;
-                        }
-                    })
-
-
 
                     let next_cursor = data.next_cursor,
                         next_first = data.next_first;
@@ -115,12 +97,13 @@ Page({
                     that.setData({
                         [objName]: setObj,
                         tags: data.categorys,
-                        staticTags: staticTags,
                         pTags: data.categorys.slice(0, 3),
                         page_title: data.page_title,
                         share_title: data.share_title,
-                        hasMore: setObj.paginate.hasMore,
+                        hasMore: data.next_cursor,
+                        hasNew: data.next_first,
                     })
+                    console.info(setObj)
                 }
             }
         }, err => {
@@ -131,9 +114,9 @@ Page({
     navigateToArticalDetail(e) {
         //点击打开浮层
         let acDetail = that.data.newAccounts.items.find(items => {
-            return items.id == e.currentTarget.dataset.id
-        })
-        console.info("acDetail", acDetail)
+                return items.id == e.currentTarget.dataset.id
+            })
+            // console.info("acDetail", acDetail)
         that.setData({
             "modalInit.item": acDetail,
             "modalInit.tag_id": e.currentTarget.dataset.id,
@@ -149,17 +132,21 @@ Page({
         that.getList();
     },
     loadMore() {
-        that.getList();
+        console.log("loadMore");
+        if (that.data.hasMore) {
+            that.getList({ cursor: that.data.hasMore })
+        }
     },
     onShareAppMessage() {
         return {
-            title: that.data.share_title || App.globalData.naviTitle,
+            title: that.data.share_title,
             path: "/pages/index/index",
         }
     },
     onReachBottom() {
-        if (that.data.newAccounts.paginate.hasMore) {
-            that.getList()
+        console.log("加载更多");
+        if (that.data.hasMore) {
+            that.getList({ cursor: that.data.hasMore })
         }
     },
     showTag(e) {

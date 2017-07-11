@@ -27,21 +27,25 @@
     float: left;
     width: 140px;
     height: 140px;
-    border-right-style: solid;
+    /*padding-right: 15px;*/
+    /*border-right-style: solid;
     border-right-color: #e94c32;
-    border-right-width: 15px;
+    border-right-width: 15px;*/
 }
 
 #right_content {
     background-color: #e94c32;
     height: 140px;
+    padding: 0 0 0 15px;
     overflow: hidden;
+    text-align: left;
 }
 
 #right_title {
     font-weight: 900;
     color: #ffffff;
     line-height: 80rpx;
+    text-align: left;
 }
 
 #container_down {
@@ -54,4 +58,5 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    text-align: left;
 }

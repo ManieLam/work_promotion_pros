@@ -340,10 +340,6 @@ page {
     text-align: center;
 }
 
-.bgfff {
-    background: #fff;
-}
-
 
 /*分界线*/
 

@@ -6,7 +6,7 @@
 <import src="../common/Tpl_modal.wxml"/>
 
 <view class="container rel">
-	<view  hidden="{{isShow}}" class="tags flex">
+	<view  hidden="{{isShow}}" class="tags flex flex-t-center">
 		<view  class="tags_cel {{cat_id == tag.id ?'act_cat':''}}" wx:for="{{pTags}}" wx:for-item="tag" data-id="{{tag.id}}" bindtap="showNewTagList">
 			{{tag.name}}
 		</view>

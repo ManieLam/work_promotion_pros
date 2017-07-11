@@ -10,7 +10,7 @@
 
 .newCells {
     background-color: #FFFFFF;
-    line-height: 2;
+    /*line-height: 2;*/
     font-size: 17px;
     /*padding:20px 0;*/
 }
@@ -58,7 +58,7 @@ button::after {
 
 .tags_cel {
     text-align: center;
-    line-height: 30px;
+    line-height: 33px;
     width: 24%;
     height: 33px;
     background: #e5e5e5;
@@ -66,6 +66,7 @@ button::after {
     margin-right: 4px;
     border-radius: 5px;
     overflow: hidden;
+    padding: 0;
 }
 
 .tags_cel:nth-child(4n) {
@@ -125,6 +126,7 @@ button::after {
 
 .con_right_tags {
     padding-top: 30rpx;
+    padding-left: 15px;
 }
 
 .con_right_tags .tags-cell {
@@ -134,7 +136,8 @@ button::after {
     background: #bfbfbf;
     margin-right: 10px;
     padding: 0 10rpx;
-    line-height: 1.8;
+    line-height: 1.6;
+    /*float: left;*/
     /*border-right: 5px solid #bfbfbf;
     border-left: 5px solid #bfbfbf;*/
 }
@@ -169,15 +172,15 @@ button::after {
 }
 
 .con_cell {
-    padding: 0 10px;
+    padding: 10px 10px 0;
     font-size: 14px;
 }
 
 .con_bottom {
-    display: flex;
+    /*display: flex;
     display: -webkit-box;
-    display: -webkit-flex;
-    padding-bottom: 10px;
+    display: -webkit-flex;*/
+    padding-bottom: 5px;
     margin: 0 10px;
     border-bottom: 1rpx solid #aaa;
     overflow: hidden;
@@ -188,9 +191,11 @@ button::after {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     color: #e54933;
-    font-size: .6em;
+    font-size: 12px;
     font-weight: 600;
     padding: 0 15rpx;
+    /*line-height: 20px;*/
+    height: 20px;
 }
 
 .con_bottom .tags_self:not(:last-child) {

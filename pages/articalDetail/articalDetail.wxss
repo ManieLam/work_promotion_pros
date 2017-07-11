@@ -1,12 +1,7 @@
  /*pages/articalDetail/articalDetail.wxss */
  
- .container {
+ page {
      background: #fff;
- }
- 
- .flex {
-     display: flex;
-     /*flex-direction: column;*/
  }
  /*回到首页*/
  

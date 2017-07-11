@@ -33,7 +33,6 @@ Page({
 
     },
     getArticalDetail() {
-        console.info(1231231)
         let access_token = '';
         let data = {
             id: that.data.aid,
@@ -44,22 +43,23 @@ Page({
             data: data,
         }).then(data => {
             if (data.errcode == 0) {
-                let resultList = data.chanel;
-                // wx.setNavigationBarTitle({ title: data.page_title })
+                let resultList = data.channel;
+                // console.log(data.channel);
+                wx.setNavigationBarTitle({ title: data.page_title })
 
                 resultList.content ? WxParse.wxParse('content', 'html', resultList.content, that, 5) : null;
                 // let nohasMore_title = resultList.reply_count ? '以上全部评论' : '暂无评论';
-                // resultList.thumbnail = resultList.thumbnail ? resultList.thumbnail + "?imageView2/1/w/220/h/220" : ''
-
+                resultList.thumbnail = resultList.thumbnail ? resultList.thumbnail + "?imageView2/2/h/240" : ''
 
 
                 that.setData({
                     resultList: resultList,
                     // page_title: data.page_title,
-                    // share_title: data.share_title,
+                    share_title: data.share_title,
                     // isLikeArt: resultList.is_liked,
                     // "hasMore.nohasMore_title": nohasMore_title,
                 })
+                console.log("resultList::", that.data.resultList);
             }
         }, err => {})
 

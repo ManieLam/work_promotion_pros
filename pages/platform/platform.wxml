@@ -4,10 +4,8 @@
 		<view id="container_up">
 			<view id="left_pic" style="background:url({{ item.thumbnail}}) no-repeat;background-size:100% 100%;);"></view>
 			<view id="right_content">
-				<view id="right_title">{{item.title}} </view>
-				<view id="container_down">
-					{{item.excerpt}}
-				</view>
+				<view id="right_title">{{item.title}}</view>
+				<view id="container_down">{{item.excerpt}}</view>
 			</view>
 		</view>
 	</view>

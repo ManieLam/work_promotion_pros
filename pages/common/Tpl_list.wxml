@@ -23,19 +23,19 @@
 					{{item.title}}
 				</view>
 			</view>
-			<view class="con_right flex flex_2">
+			<view class="con_right flex flex_2 flex-t-start">
 				<view class="con_right_up">
 					<view class="fans">粉丝数</view>
 					<view class="read">头条阅读</view>
 					<view class="sex">男女比例</view>
 				</view>
-				<view class="con_right_up">
+				<view class="con_right_up ">
 					<view class="fans">{{item.fans}}</view>
 					<view class="read">{{item.read}}</view>
 					<view class="sex">{{item.gender}}</view>
 				</view>
-				<view class="con_right_tags flex flex-t-center w100" >
-					<view   wx:for="{{staticTags}}" wx:key="item"  data-id="{{item.id}}" class="tags-cell {{item.isAct?'tags-cell_act':''}} "> {{item.name}}</view>
+				<view class="con_right_tags flex" >
+					<view  wx:for="{{item.adtype}}" wx:for-item="tags" wx:key="tags" data-id="{{tags.id}}" class="tags-cell tags-cell_act{{tags.isAct?'tags-cell_act':''}} "> {{tags.name}}</view>
 				</view>
 			</view>
 		</view>

@@ -196,11 +196,17 @@
 .con_right_up {
     display: flex;
     flex-wrap: wrap;
+    font-weight: 500
 }
 
 .con_right_up>view {
     width: 76px;
 }
+
+
+/*.con_right_up__info {
+    font-weight: 600
+}*/
 
 .con_right_down>view {
     width: 76px;
@@ -222,18 +228,24 @@
 }
 
 .newModal .newModal_body {
-    position: absolute;
-    margin: 0 auto;
+    position: fixed;
+    /*margin: 0 auto;*/
     border-radius: 5px;
     -webkit-border-radius: 5px;
     z-index: 2;
     width: 93%;
     height: 280px;
+    margin: 0 auto;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: -140px;
 }
 
 .newModal .overTag {
     z-index: 1;
-    position: fixed;
+    /*position: fixed;*/
     background: rgba(0, 0, 0, .3);
     height: 100%;
     width: 100%;
